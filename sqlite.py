@@ -1,14 +1,15 @@
 import sqlite3
 #connect to database
-connection = sqlite3.connect("student.db")
+conn = sqlite3.connect("student.db")
 #create cursor object to insert record
 
-cursor = connection.cursor()
+cursor = conn.cursor()
 
-table_info ="""
-Create table STUDENT(NAME, VARCHAR(25),CLASS VARCHAR(25), SECTION VARCHAR(25));"""
+table ="""
+Create table STUDENT(NAME, VARCHAR(25),CLASS VARCHAR(25), SECTION VARCHAR(25));
+"""
 
-cursor.execute(table_info)
+cursor.execute(table)
 
 ##insert record
 
@@ -18,7 +19,10 @@ cursor.execute('''INSERT INTO STUDENT values ('Darus','Data Science','A')''')
 cursor.execute('''INSERT INTO STUDENT values ('Vikas','DEVOPS','A')''')
 cursor.execute('''INSERT INTO STUDENT values ('Ram','DEVOPS','A')''')
 
+
 print("the inserted records are")
 data = cursor.execute('''Select * from STUDENT''')
 for row in data:
     print(row)
+conn.commit()
+conn.close()
