@@ -5,3 +5,5 @@ langchain
 openai
 langchain-community 
 langchain-core
+huggingface_hub
+langchain_google_generativeai
